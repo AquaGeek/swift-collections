@@ -801,6 +801,14 @@
             "PriorityQueue<Int> popMax",
             "PriorityQueue<Int> popMin"
           ]
+        },
+        {
+          "kind": "chart",
+          "title": "contains",
+          "tasks": [
+            "PriorityQueue<Int> contains",
+            "PriorityQueue<Int> unordered.contains"
+          ]
         }
       ]
     },

@@ -99,6 +99,47 @@ public struct PriorityQueue<Element: Comparable> {
     }
   }
 
+  /// Returns whether the given element exists within the priority queue, even
+  /// if it has neither the lowest nor highest priority.
+  ///
+  /// This example checks to see whether a favorite actor is in a priority queue
+  /// storing a movie's cast.
+  ///
+  ///     let cast: PriorityQueue = ["Vivien", "Marlon", "Kim", "Karl"]
+  ///     print(cast.contains("Marlon"))
+  ///     // Prints "true"
+  ///     print(cast.contains("James"))
+  ///     // Prints "false"
+  ///
+  /// - Parameter element: The element to find in the priority queue.
+  /// - Returns: `true` if the element was found in the priority queue;
+  ///   otherwise, `false`.
+  ///
+  /// - Complexity: O(*n*), where *n* is the length of the priority queue.
+  public func contains(_ element: Element) -> Bool {
+    var currentIndices = Array(storage.indices.prefix(1))
+    var subRootIsMinimum = true
+    while !currentIndices.isEmpty {
+      var nextIndices = type(of: currentIndices).init()
+      nextIndices.reserveCapacity(2 * currentIndices.count)
+      for subRootIndex in currentIndices {
+        let subRoot = storage[subRootIndex]
+        guard element != subRoot else { return true }
+        guard (subRootIsMinimum ? (>) : (<))(element, subRoot) else { continue }
+
+        if let leftIndex = _leftChildIndex(of: subRootIndex) {
+          nextIndices.append(leftIndex)
+        }
+        if let rightIndex = _rightChildIndex(of: subRootIndex) {
+          nextIndices.append(rightIndex)
+        }
+      }
+      currentIndices = nextIndices
+      subRootIsMinimum.toggle()
+    }
+    return false
+  }
+
   /// Removes and returns the element with the lowest priority, if available.
   ///
   /// - Complexity: O(log `count`)

@@ -73,6 +73,30 @@ extension Benchmark {
         blackHole(queue)
       }
     }
+
+    self.addSimple(
+      title: "PriorityQueue<Int> contains",
+      input: Int.self
+    ) { size in
+      let queue = PriorityQueue((0..<size).map { 2 * $0 }.shuffled())
+      let tests = ((-1)..<(2 * size)).map { queue.contains($0) }
+      precondition(tests.first == false)
+      precondition(tests.dropFirst().lazy.filter { $0 }.count == size)
+      precondition(tests.dropFirst().lazy.filter { !$0 }.count == size)
+      blackHole(tests)
+    }
+
+    self.addSimple(
+      title: "PriorityQueue<Int> unordered.contains",
+      input: Int.self
+    ) { size in
+      let queue = PriorityQueue((0..<size).map { 2 * $0 }.shuffled())
+      let tests = ((-1)..<(2 * size)).map { queue.unordered.contains($0) }
+      precondition(tests.first == false)
+      precondition(tests.dropFirst().lazy.filter { $0 }.count == size)
+      precondition(tests.dropFirst().lazy.filter { !$0 }.count == size)
+      blackHole(tests)
+    }
   }
 }
 
