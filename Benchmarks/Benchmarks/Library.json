@@ -776,7 +776,13 @@
             "Heap<Int> insert",
             "Heap<Int> insert(contentsOf:)",
             "Heap<Int> popMax",
-            "Heap<Int> popMin"
+            "Heap<Int> popMin",
+            "PriorityQueue<Int, Int> insert",
+            "PriorityQueue<Int, Int> popMax",
+            "PriorityQueue<Int, Int> popMin",
+            "PriorityQueue<Task, Int> insert",
+            "PriorityQueue<Task, Int> popMax",
+            "PriorityQueue<Task, Int> popMin"
           ]
         },
         {
@@ -791,7 +797,9 @@
           "title": "insert",
           "tasks": [
             "Heap<Int> insert",
-            "Heap<Int> insert(contentsOf:)"
+            "Heap<Int> insert(contentsOf:)",
+            "PriorityQueue<Int, Int> insert",
+            "PriorityQueue<Task, Int> insert"
           ]
         },
         {
@@ -799,7 +807,11 @@
           "title": "remove",
           "tasks": [
             "Heap<Int> popMax",
-            "Heap<Int> popMin"
+            "Heap<Int> popMin",
+            "PriorityQueue<Int, Int> popMax",
+            "PriorityQueue<Int, Int> popMin",
+            "PriorityQueue<Task, Int> popMax",
+            "PriorityQueue<Task, Int> popMin"
           ]
         }
       ]
