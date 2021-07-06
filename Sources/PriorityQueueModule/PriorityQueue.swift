@@ -74,7 +74,7 @@ public struct PriorityQueue<Value, Priority: Comparable> {
 
   /// Inserts the given item into the queue.
   ///
-  /// - Complexity: O(log `count`) / 2
+  /// - Complexity: O(log `count`)
   @inlinable
   public mutating func insert(_ value: Value, priority: Priority) {
     defer { _insertionCounter += 1 }
